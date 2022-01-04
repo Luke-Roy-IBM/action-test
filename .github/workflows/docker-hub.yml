@@ -8,7 +8,7 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     env:
-      IMAGE: "lukeroyibm/ibmfunction-on-code-engine-nodejs:$(date +%s)"
+      IMAGE: lukeroyibm/ibmfunction-on-code-engine-nodejs:latest
     steps:
 #    - name: Set up QEMU
 #      uses: docker/setup-qemu-action@v1
