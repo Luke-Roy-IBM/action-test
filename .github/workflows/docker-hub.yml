@@ -19,7 +19,7 @@ jobs:
       id: previoustag
       uses: "WyriHaximus/github-action-get-previous-tag@v1"
       with:
-        fallback: 1.0.0
+        fallback: 0.0.0
     - uses: mr-smithers-excellent/docker-build-push@v5
       name: Build & push Docker image
       with:
