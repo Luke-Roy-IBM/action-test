@@ -18,6 +18,7 @@ jobs:
       with:
         image: lukeroyibm/ibmfunction-on-code-engine-nodejs
         tags: v1, latest
+        registry: docker.io
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
