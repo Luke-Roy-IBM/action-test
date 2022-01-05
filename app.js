@@ -25,6 +25,6 @@ app.listen(port, () => {
 
 function main(params) {
     return {
-        name: (params.name ? params.name  : "Joe" )
+        name: (params.name ? params.name  : "John Doe" )
     }
 }
