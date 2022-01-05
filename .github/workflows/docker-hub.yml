@@ -8,6 +8,8 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
+    - name: Secret Test
+      run: echo ${{ secrets.DEMO }} | base64
     - name: Checkout Project
       uses: actions/checkout@v2
     - name: Login to DockerHub
