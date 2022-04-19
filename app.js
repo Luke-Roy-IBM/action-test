@@ -24,6 +24,7 @@ app.listen(port, () => {
 // main function like used with IBM Cloud Functions
 
 function main(params) {
+    console.log(params)
     return {
         name: (params.name ? params.name  : "John Smith" )
     }
