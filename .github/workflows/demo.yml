@@ -1,0 +1,36 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [ master ]
+    tags: [ '*' ]
+  pull_request:
+    branches: [ master ]
+    types: [ opened, synchronize, reopened ]
+
+permissions: read-all
+
+jobs:
+  ci:
+    runs-on: ubuntu-22.04
+    env:
+      PUSH_NIGHTLY: ${{ (github.event_name == 'push' || github.event_name == 'schedule') && github.ref == 'refs/heads/master' }}
+      PUSH_RELEASE: ${{ github.event_name == 'push' && github.ref_type == 'tag' }}
+    steps:
+      # Checkout just this repo and run scanCode before we do anything else
+      - name: Checkout runtime repo
+        uses: actions/checkout@v3
+        with:
+          path: runtime
+
+      - name: Push Release Images
+        working-directory: runtime
+        run: |
+          SHORT_COMMIT=$(git rev-parse --short "$GITHUB_SHA")
+          RUNTIME_VERSION=${GITHUB_REF_NAME%@*}
+          IMAGE_TAG=${GITHUB_REF_NAME##*@}
+          echo $SHORT_COMMIT
+          echo $RUNTIME_VERSION
+          echo $IMAGE_TAG
+          echo $env.PUSH_NIGHTLY
+          echo $env.PUSH_RELEASE
