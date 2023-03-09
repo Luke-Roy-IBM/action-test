@@ -1,0 +1,27 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: |
+        echo "one"
+        export MY_DIR="$(pwd)"
+        echo $MY_DIR
+
+    # Test this repository
+    - name: Test Runtime
+      run: |
+        echo $MY_DIR
+        
